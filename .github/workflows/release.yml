@@ -24,7 +24,7 @@ jobs:
         run: dotnet publish -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true
 
       - name: Get latest version
-        id: version
+        shell: bash
         run: |
           latest=$(grep -Eo '## \[[0-9]+\.[0-9]+\.[0-9]+\]' CHANGELOG.md | head -1 | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+')
           echo "version=$latest" >> $GITHUB_OUTPUT
